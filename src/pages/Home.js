@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { Layout } from 'antd';
 import AppHeader from "../components/Header"
 import AppFooter from "../components/Footer"
-import Carousel from "../components/Carousel"
+import Homecontent from "../components/Homecontent";
+
 
 const { Header, Content, Footer } = Layout;
 
@@ -14,7 +15,7 @@ function Home() {
           <AppHeader />
         </Header>
         <Content className="layout-content">
-          <Carousel />
+          <Homecontent />
         </Content>
         <Footer className="layout-footer">
           <AppFooter/>  

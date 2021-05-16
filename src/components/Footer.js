@@ -1,8 +1,12 @@
 import React from 'react'
+import { BackTop } from "antd";
 
 function Footer() {
     return (
         <div class="footer-container">
+            <BackTop >
+                <div className="backtop-bottom">TOP</div>
+            </BackTop>
             <div className="container footer">
                 <div className="social-icon-container">
                     <a href="#" className="social-icon">
