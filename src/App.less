@@ -5,11 +5,23 @@ body{
     background-color: #FBFFF1;
 }
 
+
+.storelayout{
+    width: 100%;
+}
+@media (min-width: 2133px) {
+    .storelayout{
+        min-width: 2133px;
+    }
+    .layout{
+        margin: auto;
+    }
+}
+
 .container{
     max-width: 2133px;
     margin: auto;
 }
-
 
 @media (max-width: 1440px) {
     .ant-layout-header{
@@ -24,11 +36,11 @@ body{
 /* Header */
 .header-container{
     width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 10px;
     background-color: #253237;
 }
 
 .header{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 10px;
     position: relative;
     display: flex;
     background-color: #FBFFF1;
@@ -79,7 +91,7 @@ body{
     display: flex;
     height: 100%;
     right: 100px;
-    bottom: -10px;
+    bottom: -15px;
     overflow: hidden;
 }
 
@@ -95,30 +107,30 @@ body{
 .column-content:hover .column{
     background-color: #B00000;
     transition: all 0.3s ease-out;
-    transform: translateY(-10px);
+    transform: translateY(-15px);
 }
 .column-content:hover .nav-icon{
     transition: all 0.3s ease-out;
-    transform: translateY(-10px);
+    transform: translateY(-15px);
 }
 
 .column1{
     width: 50px;
-    height: 30px;
+    height: 45px;
     background-color: #E26D5C;
     transition: all 0.2s ease-out;
 }
 
 .column2{
     width: 50px;
-    height: 50px;
+    height: 65px;
     background-color: #E26D5C;
     transition: all 0.2s ease-out;
 }
 
 .column3{
     width: 50px;
-    height: 70px;
+    height: 85px;
     background-color: #E26D5C;
     transition: all 0.2s ease-out;
 }
@@ -322,13 +334,14 @@ body{
 .slider-container{
     position: relative;
     width: 100%;
+    overflow: hidden;
 }
 .slider{
-    display: flex;
+    // display: flex;
     width: 100%;
     // height: 500px;
     background-color: #D6D5C9;
-    padding: 80px 20% 50px 20%;
+    padding: 95px 80px 50px 80px;
 }
 
 
@@ -339,7 +352,13 @@ body{
     
     background-color: transparent;
     border: 0;
+    transition: all 0.2s ease-out;
 }
+.BookCard:hover{
+    transform: translateY(-25px);
+    transition: all 0.2s ease-out;
+}
+
 .book-shadow{
     width: 200px;
     height: 285px;
@@ -351,9 +370,10 @@ body{
     top: 24px;
     width: 200px;
     height: 285px;
-    background-color: #E26D5C;
+    background-color: #B9BAA3;
     background-size: cover;
     box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 10px;
+    padding: 1px;
 }
 .product-info{
     padding: 1rem;
@@ -364,6 +384,31 @@ body{
 }
 .product-author{
     text-align: end;
+}
+
+@media (max-width: 970px){
+    .carousel-title{
+        width: 160px;
+        height: 40px;
+        font-size: 24px;
+    }
+    .BookCard{
+        width: 208px;
+    }
+    .book-shadow{
+        width: 160px;
+        height: 228px;
+    }
+    .book-img{
+        width: 160px;
+        height: 228px;
+    }
+    .product-info{
+        padding:0.51rem;
+    }
+    .product-name{
+        font-size: small;
+    }
 }
 
 // BackTop
@@ -379,4 +424,15 @@ body{
     color: #253237;
     text-align: center;
     font-size: 18px;
+}
+
+// ProductNav
+.ant-layout-sider-zero-width-trigger{
+    top: 0;
+}
+
+//Product
+.productlist{
+    padding: 2rem;
+    background-color: #FBFFF1;
 }

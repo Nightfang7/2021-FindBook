@@ -2,7 +2,7 @@ import React from 'react'
 import { Card } from "antd"
 import { Link } from 'react-router-dom';
 
-function CarouselItem( { product } ) {
+function ProductItem({ product }) {
     return (
         <div>
             <Card className="BookCard">
@@ -22,4 +22,4 @@ function CarouselItem( { product } ) {
     )
 }
 
-export default CarouselItem
+export default ProductItem
