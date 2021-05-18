@@ -1,25 +1,37 @@
 import React from 'react'
 import { Menu } from 'antd';
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
-
+import { 
+    DesktopOutlined,
+    PieChartOutlined,
+    FileOutlined,
+    TeamOutlined,
+    UserOutlined, 
+} from '@ant-design/icons';
 
 
 export default function ProductNav() {
+    const { SubMenu } = Menu;
     
     return (
         
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']}>
-            <Menu.Item key="1" icon={<UserOutlined />}>
-                nav 1
+        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            <Menu.Item key="1" icon={<PieChartOutlined />}>
+              Option 1
             </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-                nav 2
+            <Menu.Item key="2" icon={<DesktopOutlined />}>
+              Option 2
             </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-                nav 3
-            </Menu.Item>
-            <Menu.Item key="4" icon={<UserOutlined />}>
-                nav 4
+            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
+              <Menu.Item key="3">Tom</Menu.Item>
+              <Menu.Item key="4">Bill</Menu.Item>
+              <Menu.Item key="5">Alex</Menu.Item>
+            </SubMenu>
+            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
+              <Menu.Item key="6">Team 1</Menu.Item>
+              <Menu.Item key="8">Team 2</Menu.Item>
+            </SubMenu>
+            <Menu.Item key="9" icon={<FileOutlined />}>
+              Files
             </Menu.Item>
         </Menu>
         

@@ -5,6 +5,9 @@ body{
     background-color: #FBFFF1;
 }
 
+a{
+    color: #E26D5C;
+}
 
 .storelayout{
     width: 100%;
@@ -40,6 +43,7 @@ body{
 }
 
 .header{
+    z-index: 200;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 10px;
     position: relative;
     display: flex;
@@ -349,7 +353,7 @@ body{
 .BookCard{
     // margin-top: 90px;
     width: 248px;
-    
+    border-radius: 5px;
     background-color: transparent;
     border: 0;
     transition: all 0.2s ease-out;
@@ -376,6 +380,7 @@ body{
     padding: 1px;
 }
 .product-info{
+    position: relative;
     padding: 1rem;
 }
 .product-name{
@@ -404,7 +409,7 @@ body{
         height: 228px;
     }
     .product-info{
-        padding:0.51rem;
+        padding:0.5rem;
     }
     .product-name{
         font-size: small;
@@ -429,10 +434,68 @@ body{
 // ProductNav
 .ant-layout-sider-zero-width-trigger{
     top: 0;
+    border-radius: 0 5px 5px 0;
 }
+.ant-menu-dark.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color: #E26D5C;
+}
+.ant-layout-sider-trigger{
+    position: absolute;
+    top: 240px;
+ }
+
 
 //Product
 .productlist{
     padding: 2rem;
     background-color: #FBFFF1;
+}
+
+//ProductCard
+.BookCard.black:hover{
+    transform: translateY(0px);
+    transition: all 0.2s ease-out;
+}
+.black{
+    background-color: #253237;
+}
+.text-white{
+    color: #D6D5C9;
+}
+.BookCard.black{
+    width: 256px;
+}
+.product-info.text-white{
+    padding: 1rem 0;
+}
+.product-name.text-white{
+    text-align: left;
+}
+.price.text-white{
+    text-align: left;
+}
+.shoppingLike-container{
+    justify-content: right;
+}
+.shoppingLike{
+    display: flex;
+    
+}
+
+@media (max-width: 970px){
+    .BookCard.black{
+        width: 216px;
+    }
+    .price.text-white{
+        font-size: smaller;
+    }
+}
+
+//ProductDetail
+.product-image{
+    width: 100%;
+    height: 32rem;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
 }

@@ -4,13 +4,13 @@ import ProductItem from './ProductItem';
 
 function ProductList({products}) {
     return (
-        <Row gutter={[16, 16]}>
+        <Row justify="start" gutter={[32, 32]}>
         {products.map(product => (
             <Col 
             key={product.id} 
             sm={{ span: 12 }}
             md={{ span: 8 }}
-            lg={{ span: 6 }}
+            lg={{ span: 8 }}
             xl={{ span: 6 }}
             xxl={{ span: 4 }}
             >
