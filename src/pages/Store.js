@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Layout } from 'antd';
 import AppHeader from "../components/Header"
 import AppFooter from "../components/Footer"
 import ProductNav from '../components/ProductNav';
 import ProductList from '../components/ProductList';
-import products from '../json/products.json'
+import { StoreContext } from "../store"
 
 
 const { Header, Content, Footer, Sider } = Layout;
 
 // 商品集頁
 function Store() {
+    const { state: { page: {title, products} } } = useContext(StoreContext);
     const [collapsed, setcollapsed] = useState(false);
     const onCollapse = collapsed => setcollapsed( collapsed );
     
@@ -27,9 +28,7 @@ function Store() {
                         <ProductNav />
                     </Sider>
                     <Content className="layout-content">
-                        <div className="productlist">
-                            <ProductList products={products}/>
-                        </div>
+                        <ProductList products={products} title={title} />
                     </Content>
                 </Layout>
             </Layout>

@@ -4,12 +4,14 @@ import AppHeader from "../components/Header"
 import AppFooter from "../components/Footer"
 import ProductNav from '../components/ProductNav';
 import ProductDetail from "../components/ProductDetail"
-import products from "../json/products.json";
+import products from '../json/products.json'
+
+
 
 const { Header, Content, Footer, Sider } = Layout;
 
 // 單項商品頁
-function Product({ match }) {
+function Product({match}) {
     const product = products.find(
         (x) => x.id === match.params.productId
      );

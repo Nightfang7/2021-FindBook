@@ -1,11 +1,12 @@
 import React from 'react'
 import { Card } from "antd"
 import { Link } from 'react-router-dom';
+import ProductShoppingbag from './ProductShoppingbag';
 
 function ProductItem({ product }) {
     return (
         <div>
-        
+            
             <Card className="BookCard black"> 
                 <Link to={`/product/${product.id}`}>
                     <div className="book-size book-shadow"></div>
@@ -22,7 +23,7 @@ function ProductItem({ product }) {
                         <div className="shoppingLike-container">
                             <span className="shoppingLike">
                                 <i class="far fa-heart fa-lg"></i>
-                                <i class="fas fa-shopping-bag fa-lg" />
+                                <ProductShoppingbag product={product} qty={1} />
                             </span>
                         </div>
                         

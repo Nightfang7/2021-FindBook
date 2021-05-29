@@ -18,7 +18,7 @@ function carousel() {
                 
                 <Carousel autoplay dotPosition="right">
                     <div className="slider-container" style={contentStyle}>
-                        <Link to="/store">
+                        <Link to="/store/newest">
                             <span className="carousel-title">最新上架</span>
                         </Link>
                     

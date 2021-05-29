@@ -1,6 +1,7 @@
 import React, {useState}  from 'react'
 import HamMenu from './HamMenu';
 import { Drawer } from "antd";
+import CartSummary from './CartSummary';
 
 function NavBar() {
     const [isOnTouch, setIsOnTouch] = useState(false);
@@ -25,12 +26,13 @@ function NavBar() {
                         <div className="column column2"></div>
                     </a>
                 </div>
-                <div className="nav-column">
+                <CartSummary />
+                {/* <div className="nav-column">
                     <a href="#" className="column-content">
-                        <i class="nav-icon fas fa-shopping-bag fa-lg" />
+                        <CartSummary />
                         <div className="column column3"></div>
                     </a>
-                </div>
+                </div> */}
             </div>
             <Drawer
                 title=" "

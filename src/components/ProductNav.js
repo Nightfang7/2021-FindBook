@@ -3,10 +3,10 @@ import { Menu } from 'antd';
 import { 
     DesktopOutlined,
     PieChartOutlined,
-    FileOutlined,
-    TeamOutlined,
-    UserOutlined, 
+    BookOutlined,
+    RiseOutlined
 } from '@ant-design/icons';
+import ProductNavItems from './ProductNavItems';
 
 
 export default function ProductNav() {
@@ -14,25 +14,37 @@ export default function ProductNav() {
     
     return (
         
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1" icon={<PieChartOutlined />}>
-              Option 1
-            </Menu.Item>
-            <Menu.Item key="2" icon={<DesktopOutlined />}>
-              Option 2
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-              <Menu.Item key="3">Tom</Menu.Item>
-              <Menu.Item key="4">Bill</Menu.Item>
-              <Menu.Item key="5">Alex</Menu.Item>
-            </SubMenu>
-            <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-              <Menu.Item key="6">Team 1</Menu.Item>
-              <Menu.Item key="8">Team 2</Menu.Item>
-            </SubMenu>
-            <Menu.Item key="9" icon={<FileOutlined />}>
-              Files
-            </Menu.Item>
+        <Menu theme="dark"  mode="inline">
+          
+          <Menu.Item key="1" icon={<PieChartOutlined />}>
+            <ProductNavItems to="/store" className="nav-item" activeClassName="nav-item--active">
+              全部商品
+            </ProductNavItems> 
+          </Menu.Item>
+
+          <Menu.Item key="2" icon={<DesktopOutlined />}>
+            <ProductNavItems to="/store/newest" className="nav-item" activeClassName="nav-item--active">
+              最新上架
+            </ProductNavItems>
+          </Menu.Item>
+        
+          <SubMenu key="sub1" icon={<RiseOutlined />} title="熱烈推薦">
+            <Menu.Item key="3">熱銷TOP</Menu.Item>
+            <Menu.Item key="4">店長推薦</Menu.Item>
+            <Menu.Item key="5">Alex</Menu.Item>
+          </SubMenu>
+        
+          <Menu.Item key="6" icon={<BookOutlined />}> 
+            <ProductNavItems to="/store/taiwan" className="nav-item" activeClassName="nav-item--active">
+              台灣漫畫
+            </ProductNavItems>
+          </Menu.Item>
+        
+          
+          <Menu.Item key="7" icon={<BookOutlined />}>
+            日本漫畫
+          </Menu.Item>
+            
         </Menu>
         
     );
