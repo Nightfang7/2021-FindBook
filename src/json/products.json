@@ -5,7 +5,7 @@
         "name2": "短篇漫畫集",
         "price": 270,
         "countInStock": 3,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/d0/d06074f09c0f7b6c9c9b713c2ff7539a.jpg"
+        "image": "/images/NewB01.jpg"
     },
     {
         "id": "NewB02",
@@ -13,7 +13,7 @@
         "name2": " ",
         "price": 200,
         "countInStock": 3,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/ae/aef9694ac4c2074a1cbb0bc2eb8b29a7.jpg"
+        "image": "/images/NewB02.jpg"
     },
     {
         "id": "NewB03",
@@ -21,7 +21,7 @@
         "name2": " ",
         "price": 200,
         "countInStock": 5,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/7f/7f72098c5007f457bfe439b11dbc0957.jpg"
+        "image": "/images/NewB03.jpg"
     },
     {
         "id": "NewB04",
@@ -29,7 +29,7 @@
         "name2": " ",
         "price": 250,
         "countInStock": 5,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/57/577abdf7195dc27c533fb7a27c27326c.jpg"
+        "image": "/images/NewB04.jpg"
     },
     {
         "id": "NewB05",
@@ -37,7 +37,7 @@
         "name2": "電影宅通訊 vol.3",
         "price": 260,
         "countInStock": 5,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/43/43bc4156da0751d1982174fb94f61b16.jpg"
+        "image": "/images/NewB05.jpg"
     },
     {
         "id": "TaiwanB01",

@@ -3,30 +3,30 @@
         "id": "NewB01",
         "name1": "OTHER SIDE 好想睡",
         "name2": "短篇漫畫集",
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/d0/d06074f09c0f7b6c9c9b713c2ff7539a.jpg"
+        "image": "/images/NewB01.jpg"
     },
     {
         "id": "NewB02",
         "name1": "流星雨",
         "name2": "",
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/ae/aef9694ac4c2074a1cbb0bc2eb8b29a7.jpg"
+        "image": "/images/NewB02.jpg"
     },
     {
         "id": "NewB03",
         "name1": "親近大自然",
         "name2": "",
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/7f/7f72098c5007f457bfe439b11dbc0957.jpg"
+        "image": "/images/NewB03.jpg"
     },
     {
         "id": "NewB04",
         "name1": "塑料人形安妮",
         "name2": "",
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/57/577abdf7195dc27c533fb7a27c27326c.jpg"
+        "image": "/images/NewB04.jpg"
     },
     {
         "id": "NewB05",
         "name1": "不慌不忙",
         "name2": "電影宅通訊 vol.3",
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/43/43bc4156da0751d1982174fb94f61b16.jpg"
+        "image": "/images/NewB05.jpg"
     }
 ]
