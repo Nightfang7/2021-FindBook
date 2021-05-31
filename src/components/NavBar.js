@@ -1,5 +1,6 @@
 import React, {useState}  from 'react'
 import HamMenu from './HamMenu';
+import { Link } from "react-router-dom";
 import { Drawer } from "antd";
 import CartSummary from './CartSummary';
 
@@ -46,7 +47,16 @@ function NavBar() {
                 bodyStyle={{ backgroundColor: "#253237" }}
                 headerStyle={{ backgroundColor: "#253237", color: "#FBFFF1", height: "0.8rem", padding: "0", borderBottom: "0"}}
             >
-                
+                <Link onClose={handleCloseDrawer} to="/about">
+                    <div>
+                        關於
+                    </div>
+                </Link>
+                <Link onClose={handleCloseDrawer} to="/store">
+                    <div>
+                        全部商品
+                    </div>
+                </Link>
             </Drawer>
         </div>
     )
