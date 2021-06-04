@@ -5,7 +5,7 @@
         "name2": " ",
         "price": 960,
         "countInStock": 2,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/63/6374ba2fc5dd488a99692167f1d18cac.jpg"
+        "image": "/images/TaiwanB01.jpg"
     },
     {
         "id": "TaiwanB02",
@@ -13,7 +13,7 @@
         "name2": " ",
         "price": 300,
         "countInStock": 3,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/5b/5b24e8c475efd59c580627cd533dd168.jpg"
+        "image": "/images/TaiwanB02.jpg"
     },
     {
         "id": "TaiwanB03",
@@ -21,7 +21,7 @@
         "name2": " ",
         "price": 520,
         "countInStock": 2,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/0a/0a62c35f264d7f34b7a57194ccc7df74.jpg"
+        "image": "/images/TaiwanB03.jpg"
     },
     {
         "id": "TaiwanB04",
@@ -29,7 +29,7 @@
         "name2": "紀念館年度特典",
         "price": 230,
         "countInStock": 5,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/f6/f6c90f8e4b3ea215e51a4448445e7ff1.jpg"
+        "image": "/images/TaiwanB04.jpg"
     },
     {
         "id": "TaiwanB05",
@@ -37,6 +37,6 @@
         "name2": " ",
         "price": 520,
         "countInStock": 2,
-        "image": "https://hinetcdn.waca.ec/uploads/shops/6750/products/19/19da1abfe263207f0be3cf2e7b58f8a1.jpg"
+        "image": "/images/TaiwanB05.jpg"
     }
 ]
