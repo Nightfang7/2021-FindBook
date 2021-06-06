@@ -61,7 +61,7 @@ const initialState = {
  }
 
 export function StoreProvider(props) {
-    const [state, dispatch] = useReducerWithThunk(reducer, initialState);
+    const [state, dispatch] = useReducerWithThunk(reducer, initialState, "example");
     const value = { state, dispatch };
     return (
         <StoreContext.Provider value={value}>
