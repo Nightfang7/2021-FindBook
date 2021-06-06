@@ -3,10 +3,11 @@ import { Row, Col } from "antd";
 import ProductItem from './ProductItem';
 
 function ProductList({products, title}) {
+    console.log(products)
+    console.log(title)
     return (
         <div>
             <div className="prodoct-title-content">
-                
                 <span className="product-title">
                     <i class="fas fa-angle-right title-icon"></i>
                     {title}

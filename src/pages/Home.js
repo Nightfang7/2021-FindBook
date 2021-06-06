@@ -8,7 +8,7 @@ import Homecontent from "../components/Homecontent";
 const { Header, Content, Footer } = Layout;
 
 function Home() {
-    // const { state: { page: {title, products} } } = useContext(StoreContext);
+    //const { state: { page: { products} } } = useContext(StoreContext);
     return (
       <Layout>
         <Header className="layout-header">

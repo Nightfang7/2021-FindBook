@@ -14,7 +14,8 @@ function Store() {
     const { state: { page: {title, products} } } = useContext(StoreContext);
     const [collapsed, setcollapsed] = useState(false);
     const onCollapse = collapsed => setcollapsed( collapsed );
-    
+    console.log(products)
+    console.log(title)
     return (
         <Layout>
             <Header className="layout-header">

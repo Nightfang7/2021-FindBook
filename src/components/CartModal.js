@@ -1,26 +1,13 @@
 import { Modal, Button, Select } from "antd";
-import { useContext } from "react";
+import { useEffect, useContext } from "react";
 import { StoreContext } from "../store"
 import { ADD_CART_ITEM, REMOVE_CART_ITEM } from "../util/constants";
-
+import { addcartItem, removeCartItem } from "../action";
 const { Option } = Select;
 
 export default function CartModal({isModalVisible, toggleModal}) {
    const { state: { cartItems }, dispatch } = useContext(StoreContext);
    const handleCancel = () => toggleModal(!isModalVisible);
-   const addToCart = (product, qty) => {
-        dispatch({
-        type: ADD_CART_ITEM,
-        payload: {
-            id: product.id,
-            name: product.name,
-            image: product.image,
-            price: product.price,
-            countInStock: product.countInStock,
-            qty,
-        },
-        });
-    };
 
     const removeFromCart = (productId) => {
         dispatch({ type: REMOVE_CART_ITEM, payload: productId });
@@ -31,6 +18,11 @@ export default function CartModal({isModalVisible, toggleModal}) {
            cartItems.reduce((sum, item) => sum + item.price * item.qty, 0)
            : 0;
     }
+
+    useEffect(()=>{
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+   }, [cartItems])
+
    return (
       <Modal 
          title="購物車" 
@@ -53,7 +45,7 @@ export default function CartModal({isModalVisible, toggleModal}) {
                         <Select
                            defaultValue={item.qty}
                            className="select-style"
-                           onChange={(val) => addToCart(item, val)}
+                           onChange={(qty) => addcartItem(dispatch, item, qty)}
                         >
                            {[...Array(item.countInStock).keys()].map((x) => (
                               <Option key={x + 1} value={x + 1}>
@@ -67,7 +59,7 @@ export default function CartModal({isModalVisible, toggleModal}) {
                      <div className="cart-price">
                         NT.{item.price * item.qty}    
                      </div>
-                     <div className="cart-item-delete" onClick={()=>removeFromCart(item.id)}>
+                     <div className="cart-item-delete" onClick={()=>removeCartItem(dispatch, item.id)}>
                         x
                      </div>
                   </div>

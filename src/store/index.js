@@ -1,7 +1,7 @@
-import { createContext, useReducer } from "react";
+import { createContext } from "react";
+import useReducerWithThunk from 'use-reducer-thunk';
 import products from "../json/products.json";
 import {
-    SET_STOREPAGE_TITLE,
     SET_STOREPAGE_CONTENT,
     SET_PRODUCTNAVBAR_ACTIVEITEM,
     ADD_CART_ITEM,
@@ -10,6 +10,9 @@ import {
 
 
 export const StoreContext = createContext();  
+let cartItems = localStorage.getItem("cartItems")
+? JSON.parse(localStorage.getItem("cartItems"))
+: [];
 
 const initialState = {
     page: {
@@ -19,31 +22,17 @@ const initialState = {
     navBar: {
        activeItem: "/store",
     },
-    cartItems: [],
+    cartItems,
  };
-
-let cartItems = {};
 
  function reducer(state, action){
      console.log(action)
      switch (action.type) {
-        case SET_STOREPAGE_TITLE:
-            return {
-                ...state,
-                page: {
-                   ...state.page,
-                   title: action.payload,
-                },
-                
-            };
+
         case SET_STOREPAGE_CONTENT:
             return {
                 ...state,
-                page: {
-                   ...state.page,
-                   products: action.payload,
-                },
-                
+                page: action.payload,
             };
         case SET_PRODUCTNAVBAR_ACTIVEITEM:
             return {
@@ -72,7 +61,7 @@ let cartItems = {};
  }
 
 export function StoreProvider(props) {
-    const [state, dispatch] = useReducer(reducer, initialState);
+    const [state, dispatch] = useReducerWithThunk(reducer, initialState);
     const value = { state, dispatch };
     return (
         <StoreContext.Provider value={value}>

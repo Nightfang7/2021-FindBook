@@ -29,7 +29,11 @@ export default function ProductNav() {
           </Menu.Item>
         
           <SubMenu key="sub1" icon={<RiseOutlined />} title="熱烈推薦">
-            <Menu.Item key="3">熱銷TOP</Menu.Item>
+            <Menu.Item key="3">
+              <ProductNavItems to="/store/topproduct" className="nav-item" activeClassName="nav-item--active">
+                熱銷TOP
+              </ProductNavItems>
+            </Menu.Item>
             <Menu.Item key="4">店長推薦</Menu.Item>
             <Menu.Item key="5">Alex</Menu.Item>
           </SubMenu>
