@@ -1,5 +1,6 @@
 [
     {
+        "category": "最新上架",
         "id": "NewB01",
         "name1": "OTHER SIDE 好想睡",
         "name2": "短篇漫畫集",
@@ -8,6 +9,7 @@
         "image": "/images/NewB01.jpg"
     },
     {
+        "category": "最新上架",
         "id": "NewB02",
         "name1": "流星雨",
         "name2": " ",
@@ -16,6 +18,7 @@
         "image": "/images/NewB02.jpg"
     },
     {
+        "category": "最新上架",
         "id": "NewB03",
         "name1": "親近大自然",
         "name2": " ",
@@ -24,6 +27,8 @@
         "image": "/images/NewB03.jpg"
     },
     {
+        
+        "category": "最新上架",
         "id": "NewB04",
         "name1": "塑料人形安妮",
         "name2": " ",
@@ -32,6 +37,7 @@
         "image": "/images/NewB04.jpg"
     },
     {
+        "category": "最新上架",
         "id": "NewB05",
         "name1": "不慌不忙",
         "name2": "電影宅通訊 vol.3",
@@ -40,6 +46,7 @@
         "image": "/images/NewB05.jpg"
     },
     {
+        "category": "台灣漫畫",
         "id": "TaiwanB01",
         "name1": "說故事遊戲",
         "name2": " ",
@@ -48,6 +55,7 @@
         "image": "/images/TaiwanB01.jpg"
     },
     {
+        "category": "台灣漫畫",
         "id": "TaiwanB02",
         "name1": "人肉包子",
         "name2": " ",
@@ -56,6 +64,7 @@
         "image": "/images/TaiwanB02.jpg"
     },
     {
+        "category": "台灣漫畫",
         "id": "TaiwanB03",
         "name1": "漫漫畫人間",
         "name2": " ",
@@ -64,6 +73,7 @@
         "image": "/images/TaiwanB03.jpg"
     },
     {
+        "category": "台灣漫畫",
         "id": "TaiwanB04",
         "name1": "掛・號２：臺灣新文化運動",
         "name2": "紀念館年度特典",
@@ -72,6 +82,7 @@
         "image": "/images/TaiwanB04.jpg"
     },
     {
+        "category": "台灣漫畫",
         "id": "TaiwanB05",
         "name1": "夜長夢多",
         "name2": " ",

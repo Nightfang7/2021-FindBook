@@ -35,17 +35,16 @@ export default function ProductNav() {
               </ProductNavItems>
             </Menu.Item>
             <Menu.Item key="4">店長推薦</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
           </SubMenu>
         
-          <Menu.Item key="6" icon={<BookOutlined />}> 
+          <Menu.Item key="5" icon={<BookOutlined />}> 
             <ProductNavItems to="/store/taiwan" className="nav-item" activeClassName="nav-item--active">
               台灣漫畫
             </ProductNavItems>
           </Menu.Item>
         
           
-          <Menu.Item key="7" icon={<BookOutlined />}>
+          <Menu.Item key="6" icon={<BookOutlined />}>
             日本漫畫
           </Menu.Item>
             

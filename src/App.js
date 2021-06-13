@@ -4,7 +4,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Store from './pages/Store'
 import Product from './pages/Product'
+import Feed from './pages/Feed'
+
 import { StoreProvider } from "./store"
+
 
 function App() {
     return (
@@ -14,6 +17,7 @@ function App() {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/store" component={Store}/>
                     <Route exact path="/store/:pageName" component={Store}/>
+                    <Route exact path="/feeder" component={Feed} />
                     <Route exact path="/product/:productId" component={Product}/>
                 </Switch>
             </BrowserRouter>

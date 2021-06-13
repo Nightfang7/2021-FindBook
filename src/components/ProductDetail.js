@@ -1,13 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Row, Col } from "antd";
 import { Select, Rate } from 'antd';
 import AddToCart from './AddToCart';
+import { StoreContext } from "../store"
+import { setProductDetail } from "../action";
 
 const { Option } = Select;
 const desc = [ '1', '2', '3', '4', '5'];
 
-function ProductDetail({ product }) {
-    const [qty, setQty] = useState(product.countInStock > 0 ? 1 : 0);
+function ProductDetail() {
+    const { state: { productDetail: { product, qty} }, dispatch } = useContext(StoreContext);
+    //const [qty, setQty] = useState(product.countInStock > 0 ? 1 : 0);
     const [value, setValue] = useState(3);
     const handlechangeStar = value => setValue(value);
     
@@ -51,7 +54,7 @@ function ProductDetail({ product }) {
                                 <Select 
                                     defaultValue={qty} 
                                     className="select-style"
-                                    onChange={val=>setQty(val)}
+                                    onChange={val => setProductDetail(dispatch, product.id, val)}
                                 >
                                     {[...Array(product.countInStock).keys()].map((x) => (
                                         <Option key={x + 1} value={x + 1}>

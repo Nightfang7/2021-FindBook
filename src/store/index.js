@@ -2,12 +2,13 @@ import { createContext } from "react";
 import useReducerWithThunk from 'use-reducer-thunk';
 import products from "../json/products.json";
 import {
+    SET_STOREPAGE_TITLE,
     SET_STOREPAGE_CONTENT,
     SET_PRODUCTNAVBAR_ACTIVEITEM,
     ADD_CART_ITEM,
-    REMOVE_CART_ITEM 
+    REMOVE_CART_ITEM,
+    SET_PRODUCT_DETAIL, 
 } from "../util/constants"
-
 
 export const StoreContext = createContext();  
 let cartItems = localStorage.getItem("cartItems")
@@ -23,12 +24,23 @@ const initialState = {
        activeItem: "/store",
     },
     cartItems,
+    productDetail: {
+        product: {},
+        qty: 1,
+    },
  };
 
  function reducer(state, action){
      console.log(action)
      switch (action.type) {
-
+        case SET_STOREPAGE_TITLE:
+            return {
+                ...state,
+                page: {
+                ...state.page,
+                title: action.payload
+                },
+            };
         case SET_STOREPAGE_CONTENT:
             return {
                 ...state,
@@ -55,6 +67,8 @@ const initialState = {
         case REMOVE_CART_ITEM:
             cartItems = state.cartItems.filter((x) => x.id !== action.payload);
             return { ...state, cartItems };
+        case SET_PRODUCT_DETAIL:
+        return { ...state, productDetail: { ...state.productDetail, ...action.payload} };
         default:
             return state;
     }

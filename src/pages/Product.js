@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Layout } from 'antd';
 import AppHeader from "../components/Header"
 import AppFooter from "../components/Footer"
 import ProductNav from '../components/ProductNav';
 import ProductDetail from "../components/ProductDetail"
-import products from '../json/products.json'
+import { setProductDetail } from "../action";
+import { StoreContext } from "../store"
 
 
 
@@ -12,9 +13,8 @@ const { Header, Content, Footer, Sider } = Layout;
 
 // 單項商品頁
 function Product({match}) {
-    const product = products.find(
-        (x) => x.id === match.params.productId
-     );
+    const { dispatch } = useContext(StoreContext);
+    useEffect(() => setProductDetail(dispatch, match.params.productId, 0), [])// eslint-disable-line react-hooks/exhaustive-deps
     const [collapsed, setcollapsed] = useState(false);
     const onCollapse = collapsed => setcollapsed( collapsed );
 
@@ -31,7 +31,7 @@ function Product({match}) {
                         <ProductNav />
                     </Sider>
                     <Content className="layout-content">
-                        <ProductDetail product={product} />
+                        <ProductDetail />
                     </Content>
                 </Layout>
             </Layout>

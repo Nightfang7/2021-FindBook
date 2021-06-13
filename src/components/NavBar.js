@@ -57,6 +57,11 @@ function NavBar() {
                         全部商品
                     </div>
                 </Link>
+                <Link onClose={handleCloseDrawer} to="/feeder">
+                    <div>
+                        JSONFEED
+                    </div>
+                </Link>
             </Drawer>
         </div>
     )
