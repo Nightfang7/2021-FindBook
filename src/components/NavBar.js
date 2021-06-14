@@ -3,6 +3,7 @@ import HamMenu from './HamMenu';
 import { Link } from "react-router-dom";
 import { Drawer } from "antd";
 import CartSummary from './CartSummary';
+import UserInfo from './UserInfo';
 
 function NavBar() {
     const [isOnTouch, setIsOnTouch] = useState(false);
@@ -21,12 +22,13 @@ function NavBar() {
                     </a>
                     
                 </div>
-                <div className="nav-column">
+                <UserInfo />
+                {/* <div className="nav-column">
                     <a href="#" className="column-content">
                         <i class="nav-icon fas fa-user fa-lg" />
                         <div className="column column2"></div>
                     </a>
-                </div>
+                </div> */}
                 <CartSummary />
                 {/* <div className="nav-column">
                     <a href="#" className="column-content">

@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Carousel } from "antd";
 import { Link } from "react-router-dom"
 import CarouselList from './CarouselList';
 import CarouselProducts from "../json/CarousalProduct.json"
+import { StoreContext } from "../store"
+import { getTitle } from "../util"
+import { setPage } from "../action";
 
-function carousel() {
+function Mycarousel() {
+    const { state: { page: {title, products} }, dispatch } = useContext(StoreContext);
+    useEffect(() => {
+        const url = "/store/newest";
+        setPage(dispatch, url, getTitle(url))
+    }, []);
     const contentStyle = {
         height: '500px',
         color: '#fff',
@@ -23,25 +31,34 @@ function carousel() {
                         </Link>
                     
                         <div className="slider">
-                            <CarouselList CarouselProducts={CarouselProducts} />
+                            <CarouselList CarouselProducts={products} />
                         </div>
                     </div>
                     <div className="slider-container" style={contentStyle}>
-                        <span className="carousel-title">TOP熱銷</span>
+                        <Link to="/store/topproduct">
+                            <span className="carousel-title">TOP熱銷</span>
+                        </Link>
+                        
                         <div className="slider">
-                            <CarouselList CarouselProducts={CarouselProducts} />
+                            <CarouselList CarouselProducts={products} />
                         </div>
                     </div>
                     <div className="slider-container" style={contentStyle}>
-                        <span className="carousel-title">店長推薦</span>
+                        <Link to="/store/newest">
+                            <span className="carousel-title">最新上架</span>
+                        </Link>
+                    
                         <div className="slider">
-                            <CarouselList CarouselProducts={CarouselProducts} />
+                            <CarouselList CarouselProducts={products} />
                         </div>
                     </div>
                     <div className="slider-container" style={contentStyle}>
-                        <span className="carousel-title">最新上架</span>
+                        <Link to="/store/topproduct">
+                            <span className="carousel-title">TOP熱銷</span>
+                        </Link>
+                        
                         <div className="slider">
-                            <CarouselList CarouselProducts={CarouselProducts} />
+                            <CarouselList CarouselProducts={products} />
                         </div>
                     </div>
                 </Carousel>
@@ -51,4 +68,4 @@ function carousel() {
     )
 }
 
-export default carousel
+export default Mycarousel

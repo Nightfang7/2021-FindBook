@@ -6,3 +6,10 @@ export const getTitle = url => {
    );
    return json.title;
 }
+
+export const getBook = title => {
+    const json = jsonInfo.find(
+      x => x.name === title
+    );
+    return json.title;
+ }

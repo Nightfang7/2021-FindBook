@@ -7,7 +7,7 @@ function TopproductItems( { product } ) {
     return (
         <div>
             <Card className="BookCard black"> 
-                <Link to={`/product/${product.id}`}>
+                <Link to={`/product/${product.category}/${product.id}`}>
                     <div className="book-size book-shadow"></div>
                     <div className="book-size book-img">
                         <img src={product.image}

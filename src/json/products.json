@@ -89,5 +89,50 @@
         "price": 520,
         "countInStock": 2,
         "image": "/images/TaiwanB05.jpg"
+    },
+    {
+        "category": "TOP熱銷",
+        "id": "TopB01",
+        "name1": "雞蛋籃",
+        "name2": " ",
+        "price": 200,
+        "countInStock": 2,
+        "image": "/images/TopB01.jpg"
+    },
+    {
+        "category": "TOP熱銷",
+        "id": "TopB02",
+        "name1": "Sweet Dream 美夢",
+        "name2": " ",
+        "price": 350,
+        "countInStock": 3,
+        "image": "/images/TopB02.jpg"
+    },
+    {
+        "category": "TOP熱銷",
+        "id": "TopB03",
+        "name1": "夢魔",
+        "name2": " ",
+        "price": 400,
+        "countInStock": 2,
+        "image": "/images/TopB03.jpg"
+    },
+    {
+        "category": "TOP熱銷",
+        "id": "TopB04",
+        "name1": "原來不是我",
+        "name2": " ",
+        "price": 250,
+        "countInStock": 3,
+        "image": "/images/TopB04.jpg"
+    },
+    {
+        "category": "TOP熱銷",
+        "id": "TopB05",
+        "name1": "USCA TAIWAN",
+        "name2": " ",
+        "price": 350,
+        "countInStock": 2,
+        "image": "/images/TopB05.jpg"
     }
 ]

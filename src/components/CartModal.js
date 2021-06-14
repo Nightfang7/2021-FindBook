@@ -1,23 +1,24 @@
 import { Modal, Button, Select } from "antd";
 import { useEffect, useContext } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { StoreContext } from "../store"
-import { ADD_CART_ITEM, REMOVE_CART_ITEM } from "../util/constants";
-import { addcartItem, removeCartItem } from "../action";
+import { addcartItem, removeCartItem, setProductDetail } from "../action";
 const { Option } = Select;
 
 export default function CartModal({isModalVisible, toggleModal}) {
    const { state: { cartItems }, dispatch } = useContext(StoreContext);
+   const history = useHistory();
    const handleCancel = () => toggleModal(!isModalVisible);
-
-    const removeFromCart = (productId) => {
-        dispatch({ type: REMOVE_CART_ITEM, payload: productId });
-    };
 
     const getTotalPrice = () => {
         return (cartItems.length > 0) ?
            cartItems.reduce((sum, item) => sum + item.price * item.qty, 0)
            : 0;
     }
+
+    const checkoutHandler = () => {
+      history.push("/login?redirect=shipping");
+   }
 
     useEffect(()=>{
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
@@ -35,15 +36,22 @@ export default function CartModal({isModalVisible, toggleModal}) {
          ) : (
             cartItems.map(item => (
                <li key={item.id} className="cart-item">
-                  <div className="cart-image">
-                     <img src={item.image} alt={item.name} />
-                  </div>
+                  <Link to={`/product/${item.category}/${item.id}`}>
+                     <div className="cart-image" onClick={()=>{
+                        setProductDetail(dispatch, item.id, item.qty);
+                        handleCancel();
+                     }}>
+                        <img src={item.image} alt={item.name} />
+                     </div>
+                  </Link>
+                  
                   <div className="cart-item-content">
                      <div className="cart-name">{item.name}</div>
                      <div className="product-qty">
                         數量: {"   "}
                         <Select
                            defaultValue={item.qty}
+                           value={item.qty}
                            className="select-style"
                            onChange={(qty) => addcartItem(dispatch, item, qty)}
                         >
@@ -74,6 +82,7 @@ export default function CartModal({isModalVisible, toggleModal}) {
         <Button 
             className="cart-modal-btn" 
             type="primary"
+            onClick={checkoutHandler}
         >
             <i class="fas fa-shopping-bag fa-lg" />
             <span style={{marginLeft: 12}}>準備結帳</span>

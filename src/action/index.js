@@ -4,9 +4,29 @@ import {
     SET_PRODUCTNAVBAR_ACTIVEITEM,
     ADD_CART_ITEM,
     REMOVE_CART_ITEM, 
-    SET_PRODUCT_DETAIL
+    SET_PRODUCT_DETAIL,
+    BEGIN_PRODUCTS_FEED,
+    SUCCESS_PRODUCTS_FEED,
+    FAIL_PRODUCTS_FEED,
+    BEGIN_PRODUCTS_REQUEST,
+    SUCCESS_PRODUCTS_REQUEST,
+    FAIL_PRODUCTS_REQUEST,
+    BEGIN_LOGIN_REQUEST,
+    SUCCESS_LOGIN_REQUEST,
+    FAIL_LOGIN_REQUEST,
+    LOGOUT_REQUEST,
+    BEGIN_REGISTER_REQUEST,
+    SUCCESS_REGISTER_REQUEST,
+    FAIL_REGISTER_REQUEST,
 } from "../util/constants"
-import { getProducts, getProductById } from "../api";
+import { 
+    getProducts, 
+    getProductById, 
+    feedProducts,
+    signInWithEmailPassword,
+    registerWithEmailPassword,
+    signOut 
+} from "../api";
 
 export const addcartItem = (dispatch, product, qty) => {
     const item = {
@@ -30,27 +50,46 @@ export const removeCartItem = (dispatch, productId) => {
     });
 };
 
-export const setProductDetail = async (dispatch, productId, qty) => {
-    const product = await getProductById(productId);
-    if (qty === 0)
-      dispatch({
-        type: SET_PRODUCT_DETAIL,
-        payload: {
-          product,
-        }
-      })
-    else
-      dispatch({
-        type: SET_PRODUCT_DETAIL,
-        payload: {
-          product,
-          qty,
-        }
-      })
-}
+export const feedJSONToFirebase = async (dispatch) => {
+    dispatch({ type: BEGIN_PRODUCTS_FEED });
+    try {
+      await feedProducts();
+      dispatch({ type: SUCCESS_PRODUCTS_FEED });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: FAIL_PRODUCTS_FEED, payload: error });
+    }
+  }
+
+  export const setProductDetail = async (dispatch, productId, qty) => {
+    dispatch({ type: BEGIN_PRODUCTS_REQUEST });
+    try {
+      const product = await getProductById(productId);
+      if (qty === 0)
+        dispatch({
+          type: SET_PRODUCT_DETAIL,
+          payload: {
+            product,
+          }
+        })
+      else
+        dispatch({
+          type: SET_PRODUCT_DETAIL,
+          payload: {
+            product,
+            qty,
+          }
+        })    
+      dispatch({ type: SUCCESS_PRODUCTS_REQUEST });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: FAIL_PRODUCTS_REQUEST, payload: error });
+    }
+  }
 
 export const setPage = async (dispatch, url, title) => {
     let products = [];
+    dispatch({ type: BEGIN_PRODUCTS_REQUEST });
     dispatch({
       type: SET_STOREPAGE_TITLE,
       payload: title,
@@ -65,11 +104,56 @@ export const setPage = async (dispatch, url, title) => {
         type: SET_PRODUCTNAVBAR_ACTIVEITEM,
         payload: url,
       });
+      dispatch({ type: SUCCESS_PRODUCTS_REQUEST });
     } catch (error) {
       console.log(error);
+      dispatch({ type: FAIL_PRODUCTS_REQUEST, payload: error });
     }
 }
 
+export const loginToFirebase = async (dispatch, userInfo) => {
+    dispatch({ type: BEGIN_LOGIN_REQUEST });
+    try {
+      const user = await signInWithEmailPassword(userInfo.email, userInfo.password);
+      dispatch({
+        type: SUCCESS_LOGIN_REQUEST,
+        payload: user.user.providerData[0],
+      })
+      return user;
+    } catch (e) {
+      dispatch({
+        type: FAIL_LOGIN_REQUEST,
+        payload: e.message
+      })
+      console.log(e)
+      return null;
+    }
+  }
+  
+  export const registerToFirebase = async (dispatch, userInfo) => {
+    dispatch({ type: BEGIN_REGISTER_REQUEST });
+    try {
+      const user = await registerWithEmailPassword(userInfo.email, userInfo.password, userInfo.name);
+      console.log(user)
+      dispatch({
+        type: SUCCESS_REGISTER_REQUEST,
+        payload: user.providerData[0],
+      })
+      return user;
+    } catch (e) {
+      dispatch({
+        type: FAIL_REGISTER_REQUEST,
+        payload: e.message
+      })
+      console.log(e)
+      return null;
+    }
+  }
+  
+  export const logoutFromFirebase = async (dispatch) => {
+    signOut();
+    dispatch({ type: LOGOUT_REQUEST });
+  }
 // export const setStorepageContent = (dispatch, title, products) => {
 //     dispatch({
 //         type: SET_STOREPAGE_CONTENT,

@@ -3,9 +3,7 @@ import "firebase/firestore";
 import "firebase/auth";
 import jsonInfo from "../json/jsonInfo.json";
 import products from "../json/products.json"
-import newest from "../json/Newest.json"
-import taiwan from "../json/Taiwanproduct.json"
-import topproduct from "../json/Topproduct.json"
+
 
 // INITIALIZE FIREBASE
 const firebaseConfig = {
@@ -24,6 +22,9 @@ firebase.initializeApp(firebaseConfig);
 const productsCollectionRef = firebase.firestore().collection("products");
 const productsDocRef = productsCollectionRef.doc("json");
 const allProductsCollectionRef = productsDocRef.collection("allProducts");
+
+//REFERENCE AUTH
+const auth = firebase.auth();
 
 export const getProductById = async (productId) => {
     // REFERENCE PRODUCTS COLLECTION
@@ -74,9 +75,24 @@ export const feedProducts = () => {
         id
       });
     })
-  }
+}
+export const signInWithEmailPassword = async (email, password) => {
+    return await auth.signInWithEmailAndPassword(email, password);
+}
   
-  export const authenticateAnonymously = () => {
-    return firebase.auth().signInAnonymously();
-  };
+export const registerWithEmailPassword = async (email, password, name) => {
+    await auth.createUserWithEmailAndPassword(email, password);
+    const user = auth.currentUser;
+    await user.updateProfile({
+      displayName: name,
+    })
+    return user;
+}
+  
+export const signOut = () => {
+    auth.signOut();
+}  
+//   export const authenticateAnonymously = () => {
+//     return firebase.auth().signInAnonymously();
+//   };
   

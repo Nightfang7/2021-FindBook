@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Card } from "antd"
 import { Link } from 'react-router-dom';
+import { StoreContext } from "../store"
+import { setProductDetail } from "../action";
 
 function CarouselItem( { product } ) {
+    const { dispatch } = useContext(StoreContext);
     return (
         <div>
             <Card className="BookCard">
-                <Link to={`/product/${product.id}`}>
+                <Link to={`/product/${product.category}/${product.id}`}
+                onClick={() => {
+                    setProductDetail(dispatch, product.id, 1);
+                }}
+                >
                     <div className="book-size book-shadow"></div>
                     <div className="book-size book-img">
                         <img src={product.image}
