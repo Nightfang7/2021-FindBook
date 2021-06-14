@@ -22,6 +22,7 @@ firebase.initializeApp(firebaseConfig);
 const productsCollectionRef = firebase.firestore().collection("products");
 const productsDocRef = productsCollectionRef.doc("json");
 const allProductsCollectionRef = productsDocRef.collection("allProducts");
+const allOrdersCollectionRef = firebase.firestore().collection("allOrders");
 
 //REFERENCE AUTH
 const auth = firebase.auth();
@@ -87,6 +88,31 @@ export const registerWithEmailPassword = async (email, password, name) => {
       displayName: name,
     })
     return user;
+}
+
+export const updateUserInfoApi = async (email, password, displayName) => {
+    console.log(email);
+    console.log(password);
+    console.log(displayName)
+    const user = auth.currentUser;
+    if(displayName)
+      await user.updateProfile({ displayName });
+    if(email)
+      await user.updateEmail(String(email));
+    if(password)
+      await user.updatePassword(password);
+    return user;
+}
+
+export const addOrderApi = async (order) => {
+    const orderRef = await allOrdersCollectionRef.doc();
+    const id = orderRef.id;
+    // Store Data for Aggregation Queries
+    await orderRef.set({
+      ...order,
+      id
+    });
+    return { ...order, id };
 }
   
 export const signOut = () => {

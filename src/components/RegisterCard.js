@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Link, useHistory } from "react-router-dom";
 import { Form, Input, Checkbox, Button } from 'antd';
 import { WarningOutlined } from '@ant-design/icons';
@@ -37,16 +37,20 @@ const formItemLayout = {
     },
   };
 
-function RegisterCard() {
-    const { state:{ userRegister: { loading, error } }, dispatch } = useContext(StoreContext);
+function RegisterCard({ redirect }) {
+    const { state:{ userRegister: { userInfo, loading, error } }, dispatch } = useContext(StoreContext);
     const [form] = Form.useForm();
     const history = useHistory();
 
     const onFinish = async (values) => {
         console.log('Received values of form: ', values);
-        const user = await registerToFirebase(dispatch, values);
-        user && history.push("/profile");
+        await registerToFirebase(dispatch, values);
     };
+
+    useEffect(() => {
+        if (userInfo) history.push(redirect);
+    }, [userInfo]);// eslint-disable-line react-hooks/exhaustive-deps
+
     return (
         <Form
             {...formItemLayout}
@@ -63,7 +67,7 @@ function RegisterCard() {
                 rules={[
                 {
                     required: true,
-                    message: "Please input your name!",
+                    message: "請輸入姓名!",
                     whitespace: true,
                 },
                 ]}
@@ -76,11 +80,11 @@ function RegisterCard() {
                 rules={[
                 {
                     type: "email",
-                    message: "The input is not valid E-mail!",
+                    message: "E-mail格式不對喔!",
                 },
                 {
                     required: true,
-                    message: "Please input your E-mail!",
+                    message: "請輸入 E-mail!",
                 },
                 ]}
             >
@@ -93,7 +97,7 @@ function RegisterCard() {
                 rules={[
                 {
                     required: true,
-                    message: "Please input your password!",
+                    message: "請輸入密碼!",
                 },
                 ]}
                 hasFeedback
@@ -145,13 +149,25 @@ function RegisterCard() {
                 </Checkbox>
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
-                <Button
-                type="primary"
-                className="login-form__button"
-                htmlType="submit"
-                >
-                創建會員
-                </Button>
+                {loading?(
+                    <Button
+                    type="primary"
+                    className="login-form__button"
+                    htmlType="submit"
+                    loading
+                  >
+                    創建會員
+                  </Button>
+                ):(
+                    <Button
+                    type="primary"
+                    className="login-form__button"
+                    htmlType="submit"
+                    >
+                        創建會員
+                    </Button>
+                )}
+                
                 已有會員?{" "}
                 <Link to={"/login?redirect=shipping"}>登入</Link>
                 {error === "" ? (

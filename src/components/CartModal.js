@@ -6,7 +6,7 @@ import { addcartItem, removeCartItem, setProductDetail } from "../action";
 const { Option } = Select;
 
 export default function CartModal({isModalVisible, toggleModal}) {
-   const { state: { cartItems }, dispatch } = useContext(StoreContext);
+   const { state: { cart: { cartItems } }, dispatch } = useContext(StoreContext);
    const history = useHistory();
    const handleCancel = () => toggleModal(!isModalVisible);
 

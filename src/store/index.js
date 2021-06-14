@@ -7,6 +7,9 @@ import {
     SET_PRODUCTNAVBAR_ACTIVEITEM,
     ADD_CART_ITEM,
     REMOVE_CART_ITEM,
+    EMPTY_CART,
+    SAVE_SHIPPING_ADDRESS,
+    SAVE_PAYMENT_METHOD,
     SET_PRODUCT_DETAIL, 
     BEGIN_PRODUCTS_FEED,
     SUCCESS_PRODUCTS_FEED,
@@ -18,9 +21,16 @@ import {
     SUCCESS_LOGIN_REQUEST,
     FAIL_LOGIN_REQUEST,
     LOGOUT_REQUEST,
+    REMEMBER_LOGIN,
     BEGIN_REGISTER_REQUEST,
     SUCCESS_REGISTER_REQUEST,
     FAIL_REGISTER_REQUEST,
+    BEGIN_UPDATE_USERINFO,
+    SUCCESS_UPDATE_USERINFO,
+    FAIL_UPDATE_USERINFO,
+    BEGIN_ORDER_CREATE,
+    SUCCESS_ORDER_CREATE,
+    FAIL_ORDER_CREATE,
 } from "../util/constants"
 
 export const StoreContext = createContext();  
@@ -36,11 +46,21 @@ const initialState = {
     navBar: {
        activeItem: "/store",
     },
-    cartItems,
-    productDetail: {
-        product: {},
-        qty: 1,
+    cart: {
+        cartItems,
+        shippingAddress: localStorage.getItem('shippingAddress')
+          ? JSON.parse(localStorage.getItem('shippingAddress'))
+          : {},
+        paymentMethod: 'Google',
     },
+    orderInfo: { 
+        loading: false,
+        order: localStorage.getItem('orderInfo')
+        ? JSON.parse(localStorage.getItem('orderInfo'))
+        : { id: ""},
+        success: false,
+        error: null,
+      },
     feedProducts: {
         loading: false,
         error: null,
@@ -100,6 +120,15 @@ const initialState = {
         case REMOVE_CART_ITEM:
             cartItems = state.cartItems.filter((x) => x.id !== action.payload);
             return { ...state, cartItems };
+        case EMPTY_CART:
+            cartItems = [];
+            return { ...state, cart: { ...state.cart, cartItems }};
+        case SAVE_SHIPPING_ADDRESS:
+            console.log('action.payload.shippingAddress = ')
+            console.log(action.payload)
+            return { ...state, cart: { ...state.cart, shippingAddress: action.payload } };
+        case SAVE_PAYMENT_METHOD:
+            return { ...state, cart: { ...state.cart, paymentMethod: action.payload } };
         case SET_PRODUCT_DETAIL:
             return { ...state, productDetail: { ...state.productDetail, ...action.payload} };
         case BEGIN_PRODUCTS_REQUEST:
@@ -136,6 +165,27 @@ const initialState = {
                 error: action.payload,
               },
             };
+        case BEGIN_UPDATE_USERINFO:
+            return { ...state, userSignin: { ...state.userSignin, loading: true } };
+        case SUCCESS_UPDATE_USERINFO:
+            return {
+              ...state,
+              userSignin: {
+                ...state.userSignin,
+                loading: false,
+                userInfo: action.payload,
+                error: "",
+              },
+            };
+        case FAIL_UPDATE_USERINFO:
+            return {
+              ...state,
+              userSignin: {
+                ...state.userSignin,
+                loading: false,
+                error: action.payload,
+              },
+            };
         case LOGOUT_REQUEST:
             cartItems = [];
             return {
@@ -146,6 +196,14 @@ const initialState = {
                 userInfo: null,
               },
             };    
+        case REMEMBER_LOGIN:
+            return {
+              ...state,
+              userSignin: {
+                ...state.userSignin,
+                remember: action.payload,
+              },
+            };
         case BEGIN_REGISTER_REQUEST:
             return { ...state, userRegister: { ...state.userRegister, loading: true } };
         case SUCCESS_REGISTER_REQUEST:

@@ -1,24 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { Form, Input, Button, Checkbox } from 'antd';
 import { WarningOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
-import { loginToFirebase } from '../action'
+import { loginToFirebase, rememberLoginUser } from '../action'
 import { StoreContext } from "../store"
 
-const LoginCard = () => {
-  const { state:{ userSignin: { loading, error } }, dispatch } = useContext(StoreContext);
+const LoginCard = ({ redirect }) => {
+  const { state:{ userSignin: { userInfo, loading, error, remember } }, dispatch } = useContext(StoreContext);
   const [form] = Form.useForm();
   const history = useHistory();
-
-  const onFinishFailed = (errorInfo) => {
-    console.log('Failed: ', errorInfo.errorFields[0].errors[0])
-  };
   
   const onFinish = async (values) => {
     console.log('Received values of form: ', values);
-    const auth = await loginToFirebase(dispatch, values);
-    auth && history.push("/profile")
+    await loginToFirebase(dispatch, values);
   };
+
+  const onChange = e => {
+    rememberLoginUser(dispatch, e.target.checked);
+  }
+
+  useEffect(() => {
+    if(userInfo) history.push(redirect);
+  }, [ userInfo ]); 
 
   return (
     <Form
@@ -29,7 +32,6 @@ const LoginCard = () => {
         remember: true,
       }}
       onFinish={onFinish}
-      onFihishFailed={onFinishFailed}
     >
       <Form.Item
         name="email"
@@ -68,7 +70,7 @@ const LoginCard = () => {
       </Form.Item>
       <Form.Item>
         <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>記住我</Checkbox>
+          <Checkbox onChange={onChange} checked={remember}>記住我</Checkbox>
         </Form.Item>
 
         <Link className="login-form__forgot" to={"/"}>
@@ -77,9 +79,22 @@ const LoginCard = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form__button">
-          登入
-        </Button>
+        {loading?
+        (
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="login-form__button"
+            loading
+          >
+            登入
+          </Button>
+        ):(
+          <Button type="primary" htmlType="submit" className="login-form__button">
+            登入
+          </Button>
+        )}
+        
         或 <Link to={"/register?redirect=shipping"}>創建會員!</Link>
         {error === "" ? (
           <></>

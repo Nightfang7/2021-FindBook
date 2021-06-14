@@ -737,7 +737,89 @@ a{
     justify-content: center;
   }
   
-  .spinner {
+.spinner {
     margin-top: 20vh;
     margin-bottom: 20vh;
-  }
+}
+
+/* Login/Register/Shipping Form */
+.shipping-form,
+.login-form,
+.register-form {
+  max-width: 20rem;
+  background-color: #B9BAA3;
+  padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-form-text{
+    background-color: #D6D5C9;
+    padding: 0.5rem;
+    border-radius: 20px;
+}
+.login-form-text-color{
+    background-color: #FBFFF1;
+    border-radius: 15px;
+}
+.register-form {
+  max-width: 30rem;
+}
+
+.shipping-form {
+  max-width: 40rem;
+}
+
+.login-form__forgot {
+  float: right;
+}
+
+.ant-col-rtl .login-form__forgot {
+  float: left;
+}
+
+.login-form__button {
+  width: 100%;
+}
+
+.login-form__error-wrap {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.7rem;
+  width: 80%;
+  border: solid 1px #B00000;
+  border-radius: 4px;
+}
+
+.login-form__error-title {
+  color: #B00000;
+}
+
+.login-form__error-message {
+  padding-top: 0;
+  margin-top: 0;
+  font-size: 0.5rem;
+}
+
+/* Profile */
+.profile-text {
+  color: #253237;
+}
+
+/* Checkout Steps */
+.checkout-steps {
+  font-size: 0.6rem;
+  width: 80%;
+  margin-bottom: 2rem;
+}
+.checkout-steps > div {
+  border-top: 0.3rem #D6D5C9 solid;
+  color: #B9BAA3;
+  flex: 1;
+  padding: 0.2rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: #E26D5C;
+  color: #E26D5C;
+}

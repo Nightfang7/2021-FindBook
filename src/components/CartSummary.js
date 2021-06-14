@@ -6,7 +6,7 @@ import { StoreContext } from '../store';
 
 function CartSummary() {
 
-    const { state: { cartItems } } = useContext(StoreContext)
+    const { state: { cart: { cartItems }} } = useContext(StoreContext)
     const [isModalVisible, setIsOpen] = React.useState(false)
     const toggleModal = () => setIsOpen(!isModalVisible);
 
